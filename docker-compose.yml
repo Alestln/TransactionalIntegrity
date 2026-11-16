@@ -1,0 +1,20 @@
+# Файл для запуска PostgreSQL 17 в изолированном контейнере Docker
+# Запуск: docker compose up -d
+# Остановка: docker compose down
+
+services:
+  postgres:
+    image: postgres:17
+    container_name: pg-lecture9
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: SecretPassword123!
+      POSTGRES_DB: cyberbank
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata_lecture9:/var/lib/postgresql/data
+
+volumes:
+  pgdata_lecture9:
